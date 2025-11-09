@@ -1,3 +1,4 @@
 pycache/
 .env
 storage/
+logs_records/

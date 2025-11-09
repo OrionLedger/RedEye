@@ -13,7 +13,8 @@ class Neo4jClient:
             AUTH = (username, password)
             driver = GraphDatabase.driver(self._uri, auth=AUTH)
             self._driver = driver
-            logger.info("Neo4j Client connected successfully and waiting for queries ...")
+            
+            logger.info("Neo4j Client Instantiated and waiting to verify connection ...")
             return driver
         except ConnectionError as e:
             logger.exception(f"Neo 4j client failed to connect with exception: {e}")
