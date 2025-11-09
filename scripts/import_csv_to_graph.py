@@ -21,29 +21,33 @@ NODE_MAP = {
 }
 
 def import_lastfm_like_file(repo: Neo4jRepo, input_file: str):
-    with open(input_file, "r", encoding="utf-8") as f:
-        reader = csv.reader(f, delimiter="|")
-        for row in reader:
-            if len(row) != 3:
-                continue
-            user_id, relation_type, target_id = row
-            if relation_type not in RELATION_MAP:
-                continue
+    try:
+        with open(input_file, "r", encoding="utf-8") as f:
+            reader = csv.reader(f, delimiter="|")
+            for row in reader:
+                if len(row) != 3:
+                    continue
+                user_id, relation_type, target_id = row
+                if relation_type not in RELATION_MAP:
+                    continue
 
-            rel_type = RELATION_MAP[relation_type]
-            user_node_label = "User"
-            target_node_label = NODE_MAP[relation_type]
+                rel_type = RELATION_MAP[relation_type]
+                user_node_label = "User"
+                target_node_label = NODE_MAP[relation_type]
 
-            # Create User node
-            repo.create_node("User", {"id": user_id})
-            # Create target node (Event, Group, or another User)
-            repo.create_node(target_node_label, {"id": target_id})
+                # Create User node
+                repo.create_node("User", {"id": user_id})
+                # Create target node (Event, Group, or another User)
+                repo.create_node(target_node_label, {"id": target_id})
 
-            # Create relationship
-            repo.create_relationship(
-                from_label="User",
-                from_key={"id": user_id},
-                to_label=target_node_label,
-                to_key={"id": target_id},
-                rel_type=rel_type
-            )
+                # Create relationship
+                repo.create_relationship(
+                    from_label="User",
+                    from_key={"id": user_id},
+                    to_label=target_node_label,
+                    to_key={"id": target_id},
+                    rel_type=rel_type
+                )
+
+    except Exception as e:
+        logger.error(f"Failed to import data from '{input_file}': {e}")
