@@ -20,24 +20,18 @@ Social Media Analysis based profiling system is a profiling system that profiles
 ## Installation
 
 ## Usage
-pipelines and models are accessable to use via a Command Line Interface
-- Put the folder path the project exist at in the Enviroment System Variable / or use it directly from the folder
-- Run the file <strong>main.py</strong> to enter the CLI
-<p>These are the available commands:</p>
-<div style="width:100%">
-    <table>
-        <tr style="font-size:16px">
-            <th>Command</th>
-            <th>Parameters</th>
-            <th>Usage</th>
-        </tr>
-        <tr>
-            <td class="command">Hello</td>
-            <td>Hello</td>
-            <td>Hello</td>
-        </tr>
-    </table>
-</div>
+The system is exposed via a RESTful API built with Flask and served using a WSGI server.
+
+Start the server and access the interactive API documentation at:
+
+👉 http://localhost:8000/docs
+
+The documentation includes:
+- Available endpoints
+- Request and response schemas
+- Example payloads
+- Error codes
+
 
 <style>
     .command{

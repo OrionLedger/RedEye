@@ -1,6 +1,6 @@
 from . import NodeModel
 
-class User(NodeModel):
+class user_model(NodeModel):
     label = "User"
     required_fields = ["user_id"]
 

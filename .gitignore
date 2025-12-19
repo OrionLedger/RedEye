@@ -2,3 +2,4 @@ __pycache__/
 .env
 storage/
 logs_records/
+.gitignore
