@@ -1,3 +1,5 @@
+<img src='./thumpnail.jpg' alt='thumpnail'><img>
+
 # Red Eye
 ### Preparation
 

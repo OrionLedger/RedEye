@@ -3,3 +3,4 @@ __pycache__/
 storage/
 logs_records/
 .gitignore
+issues.md
